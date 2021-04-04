@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  *
  */
 
-val URL_GITHUB_SEARCH_API = "https://api.github.com/search/"
+const val URL_GITHUB_SEARCH_API = "https://api.github.com/search/"
 
 class NetworkModule {
     var retrofit: Retrofit
@@ -26,7 +26,7 @@ class NetworkModule {
         retrofit = createRetrofit()
     }
 
-    fun createRetrofit(): Retrofit {
+    private fun createRetrofit(): Retrofit {
 
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -43,11 +43,8 @@ class NetworkModule {
             .build()
     }
 
-    protected fun getCommonGson(): Gson {
-        val commonJson = GsonBuilder()
-            .excludeFieldsWithoutExposeAnnotation().create()
-        return commonJson
-    }
+    private fun getCommonGson(): Gson = GsonBuilder()
+        .excludeFieldsWithoutExposeAnnotation().create()
 
     fun <T> getApiService(service: Class<T>) = retrofit.create(service)
 }
