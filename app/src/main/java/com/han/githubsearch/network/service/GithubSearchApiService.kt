@@ -14,6 +14,7 @@ import retrofit2.http.Query
  * Created by hlee10(hlee10@lotte.net) on 05, 04, 2021..
  *
  */
+
 interface GithubSearchApiService {
     @GET("repositories")
     fun getRepositories(@Query("q") query: String): Observable<Response<Repository>>
