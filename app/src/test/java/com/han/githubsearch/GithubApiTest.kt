@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.han.githubsearch.mock.RxSchedulerRule
 import com.han.githubsearch.network.NetworkModule
 import com.han.githubsearch.network.service.GithubSearchApiService
+import com.han.githubsearch.network.service.dto.Repository
 import com.han.githubsearch.network.service.dto.Response
 import io.reactivex.schedulers.Schedulers
 import org.junit.Test
@@ -36,7 +37,7 @@ class GithubApiTest {
     @Test
     fun searchRepoApiTest() {
         val future = CompletableFuture<String>()
-        val futureForResponse = CompletableFuture<Response>()
+        val futureForResponse = CompletableFuture<Response<Repository>>()
         networkModule?.let {
             it.getApiService(GithubSearchApiService::class.java)
                 .getRepositories("kotlin")
@@ -58,6 +59,14 @@ class GithubApiTest {
         assertEquals("success", future.get())
         val response = futureForResponse.get()
         assertNotNull(response)
+        assert(response?.items?.size ?: -1 > 0)
+        assertNotNull(response?.items?.getOrNull(0)?.name)
+        assertNotNull(response?.items?.getOrNull(0)?.fullName)
+        assertNotNull(response?.items?.getOrNull(0)?.owner?.login)
+        assertNotNull(response?.items?.getOrNull(0)?.url)
+        assertNotNull(response?.items?.getOrNull(0)?.score)
+        assertNotNull(response?.items?.getOrNull(0)?.createDate)
+        assertNotNull(response?.items?.getOrNull(0)?.updateDate)
     }
 
 }
