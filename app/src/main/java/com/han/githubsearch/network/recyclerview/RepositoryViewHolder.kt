@@ -20,7 +20,7 @@ import com.han.githubsearch.network.service.dto.Repository
 class RepositoryViewHolder(val binding: ItemViewRepositoryBinding) : CommonViewHolder(binding.root) {
 
     class Creator {
-        fun newInstance(parent: ViewGroup): RecyclerView.ViewHolder {
+        fun newInstance(parent: ViewGroup): CommonViewHolder {
             return RepositoryViewHolder(
                 ItemViewRepositoryBinding.inflate(
                     LayoutInflater.from(parent.context),
