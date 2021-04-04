@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.han.githubsearch.databinding.ItemViewRepositoryBinding
+import com.han.githubsearch.network.service.dto.Repository
 
 
 /**
@@ -16,7 +17,7 @@ import com.han.githubsearch.databinding.ItemViewRepositoryBinding
  */
 
 
-class RepositoryViewHolder(binging: ItemViewRepositoryBinding) : CommonViewHolder(binging.root) {
+class RepositoryViewHolder(val binding: ItemViewRepositoryBinding) : CommonViewHolder(binding.root) {
 
     class Creator {
         fun newInstance(parent: ViewGroup): RecyclerView.ViewHolder {
@@ -31,7 +32,12 @@ class RepositoryViewHolder(binging: ItemViewRepositoryBinding) : CommonViewHolde
     }
 
     override fun bind(data: Any?) {
-        TODO("Not yet implemented")
+        if (data == null || data !is Repository) return
+        binding.name.text = data.name
+        binding.fullName.text = data.fullName
+        binding.url.text = data.url
+        binding.score.text = data.score.toString()
+        binding.update.text = data.updateDate
     }
 
 }
