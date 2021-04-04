@@ -26,5 +26,4 @@ class RepositoriesAdapter(var repositories: List<Repository>? = null)
 
     override fun getItemCount(): Int = repositories?.size ?: 0
 
-
 }
