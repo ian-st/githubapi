@@ -7,15 +7,6 @@ import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
-
-/**
- *
- * Copyright ⓒ LOTTESHOPPING Co., LTD. All rights reserved.
- *
- * Created by hlee10(hlee10@lotte.net) on 05, 04, 2021..
- *
- */
-
 class RxSchedulerRule: TestRule {
     override fun apply(base: Statement?, description: Description?): Statement {
         return object: Statement() {
