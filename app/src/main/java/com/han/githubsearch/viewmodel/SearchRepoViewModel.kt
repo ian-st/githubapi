@@ -14,17 +14,18 @@ class SearchRepoViewModel : ViewModel() {
         NetworkModule().getApiService(GithubSearchApiService::class.java)
     }
 
-    fun requestRepositories(keyword: String?) = keyword?.run keyword@ {
-            githubSearchApiService.getRepositories(this@keyword)
+    fun requestRepositories(keyword: String?) = keyword?.run keyword@{
+        githubSearchApiService.getRepositories(this@keyword)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())
                 .subscribe(
-                    {
-                        println("Success!!")
-                        repositoriesLiveData.postValue(it.items)
-                    },{
-                        println("Fail!!, ${it.message}")
-                    }
+                        {
+                            println("Success!!")
+                            repositoriesLiveData.postValue(it.items)
+                        },
+                        {
+                            println("Fail!!, ${it.message}")
+                        }
                 )
     }
 
