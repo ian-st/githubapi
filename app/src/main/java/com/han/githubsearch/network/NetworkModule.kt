@@ -9,13 +9,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-/**
- *
- * Copyright ⓒ LOTTESHOPPING Co., LTD. All rights reserved.
- *
- * Created by hlee10(hlee10@lotte.net) on 05, 04, 2021..
- *
- */
 
 const val URL_GITHUB_SEARCH_API = "https://api.github.com/search/"
 
