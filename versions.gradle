@@ -23,7 +23,7 @@ versions.gsonVersion = '2.8.5'                          // Gson version;
 
 /* Http, Retrofit2 & OkHttp */
 versions.retrofitVersion = '2.5.0'                      // Retrofit2 version;
-versions.okHttpVersion = '3.14.0'                       // OkHttpVersion;
+versions.okHttpVersion = '3.4.1'                       // OkHttpVersion;
 
 /* Kotlin */
 versions.kotlinVersion = '1.4.10'                       // kotlin version;

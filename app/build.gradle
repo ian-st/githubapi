@@ -38,6 +38,8 @@ android {
 dependencies {
 
     implementation deps.kotlin.stdlib
+    implementation deps.kotlin.coroutines
+    implementation deps.lifeCycle.viewModelKtx
     implementation deps.support.coreKtx
     implementation deps.support.appCompat
     implementation deps.support.design
