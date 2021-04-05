@@ -2,13 +2,10 @@ package com.han.githubsearch.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.han.githubsearch.network.NetworkModule
 import com.han.githubsearch.network.service.GithubSearchApiService
 import com.han.githubsearch.network.service.dto.Repository
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 class SearchRepoViewModel : ViewModel() {
@@ -29,5 +26,10 @@ class SearchRepoViewModel : ViewModel() {
                         println("Fail!!, ${it.message}")
                     }
                 )
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        repositoriesLiveData.value = null
     }
 }
