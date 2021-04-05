@@ -1,17 +1,9 @@
-package com.han.githubsearch.network.recyclerview
+package com.han.githubsearch.recyclerview
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.han.githubsearch.network.service.dto.Repository
 
-
-/**
- *
- * Copyright ⓒ LOTTESHOPPING Co., LTD. All rights reserved.
- *
- * Created by hlee10(hlee10@lotte.net) on 05, 04, 2021..
- *
- */
 
 class RepositoriesAdapter(var repositories: List<Repository>? = null)
     : RecyclerView.Adapter<CommonViewHolder>() {

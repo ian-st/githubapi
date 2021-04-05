@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.han.githubsearch.databinding.ActivityMainBinding
-import com.han.githubsearch.network.recyclerview.RepositoriesAdapter
+import com.han.githubsearch.recyclerview.RepositoriesAdapter
 import com.han.githubsearch.network.service.dto.Repository
 
 class MainActivity : AppCompatActivity() {
