@@ -40,21 +40,22 @@ class GithubApiTest {
         val futureForResponse = CompletableFuture<Response<Repository>>()
         networkModule?.let {
             it.getApiService(GithubSearchApiService::class.java)
-                .getRepositories("kotlin")
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.computation())
-                .subscribe(
-                    {
-                        println("Success!!")
-                        future.complete("success")
-                        println(it.items)
-                        futureForResponse.complete(it)
-                    },{
-                        println("Fail!!, ${it.message}")
-                        future.complete("error")
-                        futureForResponse.complete(null)
-                    }
-                )
+                    .getRepositories("kotlin")
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(Schedulers.computation())
+                    .subscribe(
+                            {
+                                println("Success!!")
+                                future.complete("success")
+                                println(it.items)
+                                futureForResponse.complete(it)
+                            },
+                            {
+                                println("Fail!!, ${it.message}")
+                                future.complete("error")
+                                futureForResponse.complete(null)
+                            }
+                    )
         }
         assertEquals("success", future.get())
         val response = futureForResponse.get()
